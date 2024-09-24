@@ -65,7 +65,7 @@ IWRAM_CODE uintptr_t bank_check(uintptr_t address) {
 }
 
 IWRAM_CODE u8 read_direct_single_byte_save(uintptr_t address) {
-    return *(vu8*)(SAVE_POS+address);
+    return *(vu8*)(SAVE_POS + address);
 }
 
 IWRAM_CODE size_t sanitize_save_size(uintptr_t address, size_t size) {

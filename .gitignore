@@ -8,6 +8,7 @@ out/
 *.sav
 *.SAV
 *.py
+.vscode
 settings.sh
 __pycache__/
 run_reset_save.sh

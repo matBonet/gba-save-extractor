@@ -2,7 +2,8 @@
 Custom ROM for extracting save data from GBA cartridges with a GBA flashcart.
 
 # Credits
-- [https://github.com/Lorenzooone/Pokemon-Gen3-to-Gen-X](https://github.com/Lorenzooone/Pokemon-Gen3-to-Gen-X): Template for cartridge swappable ROM and reading save state from Pokemon Emerald. 
+- [https://github.com/Lorenzooone/Pokemon-Gen3-to-Gen-X](https://github.com/Lorenzooone/Pokemon-Gen3-to-Gen-X): Template for cartridge swappable ROM and reading save state from Pokemon Emerald.
+- [https://felixjones.co.uk/mgba_gdb/vscode.html](GDB Debugging with mGBA | Felix Jones)
 
 # License
 All Pokémon names, sprites, names of related resources and the Japanese font are © Nintendo/Creatures Inc./GAME FREAK Inc.
