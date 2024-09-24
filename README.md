@@ -8,3 +8,7 @@ Custom ROM for extracting save data from GBA cartridges with a GBA flashcart.
 All Pokémon names, sprites, names of related resources and the Japanese font are © Nintendo/Creatures Inc./GAME FREAK Inc.
 
 Everything else, and the programming code, is governed by the MIT license.
+
+# Building
+Docker allows easily building without having to install the dependencies.
+- To build for the GBA, while in the root of the project, run: `docker run --rm -it -v ${PWD}:/home/builder/gba-save-extractor matbonet/gba-save-extractor:gba_builder`

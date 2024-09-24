@@ -1,11 +1,24 @@
+#include "base_include.h"
+#include "save.h"
+#include <stddef.h>
+#include "delays.h"
+
 #define IS_FLASH 1
 #define SAVE_POS SRAM
 
 #define BASE_FLASH_CMD *((vu8*)(SAVE_POS+0x5555)) = 0xAA; *((vu8*)(SAVE_POS+0x2AAA)) = 0x55;
 #define FLASH_BANK_CMD BASE_FLASH_CMD *((vu8*)(SAVE_POS+0x5555)) = 0xB0;
+#define FLASH_TERM_CMD *((vu8*)(SAVE_POS+0x5555)) = 0xF0;
+#define FLASH_ENTER_MAN_CMD BASE_FLASH_CMD *((vu8*)(SAVE_POS+0x5555)) = 0x90;
+#define FLASH_EXIT_MAN_CMD BASE_FLASH_CMD FLASH_TERM_CMD FLASH_TERM_CMD
+#define ID_TIMEOUT_CYCLES CLOCK_CYCLES_PER_MS(28)
 
 #define BANK_SIZE 0x10000
 #define NUM_BANKS 2
+
+#define MACRONIX_MAN_ID 0xC2
+#define SANYO_MAN_ID 0x62
+#define DEFAULT_MAN_ID 0
 
 #if IS_FLASH
 #define BANK_LIMIT BANK_SIZE

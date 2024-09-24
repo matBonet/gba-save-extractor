@@ -1,0 +1,16 @@
+#!/bin/sh
+
+cp -R /home/builder/gba-save-extractor/. .
+
+echo "Running make clean"
+make clean
+
+echo "Running make"
+# make 2>&1 >/dev/null | grep ^$(pwd);
+make
+echo "Finished running make"
+
+mkdir -p /home/builder/gba-save-extractor/out
+cp building_mb.gba /home/builder/gba-save-extractor/out/gba-save-extractor.gba
+
+
