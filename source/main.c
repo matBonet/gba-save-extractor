@@ -34,12 +34,6 @@ int main(void) {
 		iprintf("\x1b[2J");
 		scanKeys();
 		pressed_keys = keysDown();
-		
-
-		// if(pressed_keys) {
-		// 	iprintf("\x1b[2J");
-		// 	printf("", );
-		// }
 
 		switch(curr_state){
 			case MAIN_MENU:
@@ -68,6 +62,7 @@ int main(void) {
 
 			case EXTRACT_REQUEST_FLASHCART:
 				printf("Save data successfully copied to memory. Please remove the game cartridge and insert the flash cartridge.\n A: Continue");
+				printf("\x1b[18;0HBUG HAPPENS WHEN EVERDRIVE IS INSERTED!");
 				if(pressed_keys & KEY_A) {
 					curr_state = EXTRACT_SAVE_TO_FLASHCART;
 				}
