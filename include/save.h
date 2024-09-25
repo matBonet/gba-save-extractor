@@ -3,7 +3,7 @@
 
 #include <stddef.h>
 
-void copy_save_to_ram(uintptr_t, u8*, size_t);
-void init_bank(void);
+void copy_save_to_ewram(void);
+void copy_ewram_to_save(void);
 
 #endif

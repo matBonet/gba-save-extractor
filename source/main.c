@@ -10,9 +10,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-enum STATE {MAIN_MENU, EXTRACT_REQUEST_GAME, EXTRACT, EXTRACT_REQUEST_FLASHCART, EXTRACT_SUCCESS};
+enum STATE {MAIN_MENU, EXTRACT_REQUEST_GAME, EXTRACT, EXTRACT_REQUEST_FLASHCART, EXTRACT_SAVE_TO_FLASHCART, EXTRACT_SUCCESS};
 enum STATE curr_state;
 u32 pressed_keys;
+
 //---------------------------------------------------------------------------------
 // Program entry point
 //---------------------------------------------------------------------------------
@@ -37,7 +38,7 @@ int main(void) {
 
 		// if(pressed_keys) {
 		// 	iprintf("\x1b[2J");
-		// 	printf("0x%08lx\n", );
+		// 	printf("", );
 		// }
 
 		switch(curr_state){
@@ -59,15 +60,23 @@ int main(void) {
 				}
 				break;
 			case EXTRACT:
-				printf("\x1b[7;5HExtracting Save Data...");
-				// copy_save_to_ram();
+				printf("\x1b[7;4HExtracting Save Data...");
+				copy_save_to_ewram();
 
+				curr_state = EXTRACT_REQUEST_FLASHCART;
+				break;
 
 			case EXTRACT_REQUEST_FLASHCART:
 				printf("Save data successfully copied to memory. Please remove the game cartridge and insert the flash cartridge.\n A: Continue");
 				if(pressed_keys & KEY_A) {
-					curr_state = EXTRACT_SUCCESS;
+					curr_state = EXTRACT_SAVE_TO_FLASHCART;
 				}
+				break;
+			case EXTRACT_SAVE_TO_FLASHCART:
+				printf("\x1b[7;4HExporting Save Data...");
+				copy_ewram_to_save();
+
+				curr_state = EXTRACT_SUCCESS;
 				break;
 			case EXTRACT_SUCCESS:
 				printf("Save data sucessfully exported! You may now turn off the device.");
@@ -76,3 +85,6 @@ int main(void) {
 		VBlankIntrWait();
 	}	
 }
+
+
+
